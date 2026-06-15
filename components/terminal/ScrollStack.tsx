@@ -272,7 +272,7 @@ const ScrollStack = ({
       if (i < cards.length - 1) card.style.marginBottom = `${itemDistance}px`;
       card.style.willChange = "transform, filter";
       card.style.transformOrigin = "top center";
-      (card.style as CSSProperties as { backfaceVisibility?: string }).backfaceVisibility = "hidden";
+      (card.style as unknown as CSSProperties as { backfaceVisibility?: string }).backfaceVisibility = "hidden";
     });
 
     setupLenis();
