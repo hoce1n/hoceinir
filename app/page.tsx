@@ -1,19 +1,32 @@
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { About } from "@/components/sections/About";
+import { Articles } from "@/components/sections/Articles";
+import { Contact } from "@/components/sections/Contact";
+import { Hero } from "@/components/sections/Hero";
+import { Projects } from "@/components/sections/Projects";
+import { Uses } from "@/components/sections/Uses";
 import { Button } from "@/components/ui/button"
 
 export default function Page() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
+    <div className="dark min-h-screen bg-background text-foreground">
+      <a
+        href="#hero"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-primary focus:px-3 focus:py-2 focus:font-mono focus:text-sm focus:text-primary-foreground"
+      >
+        skip to content
+      </a>
+      <SiteHeader />
+      <main>
+        <Hero />
+        <About />
+        <Articles />
+        <Projects />
+        <Uses />
+        <Contact />
+      </main>
+      <SiteFooter />
     </div>
-  )
+  );
 }
