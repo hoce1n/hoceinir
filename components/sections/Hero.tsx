@@ -39,7 +39,7 @@ export function Hero() {
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Hi, I'm <span className="font-mono text-foreground">hocein</span> — a Full-Stack Developer who enjoys building modern applications with Next.js, React, TypeScript, PostgreSQL, and Prisma.
+            Hi, I&lsquo;m <span className="font-mono text-foreground">hocein</span> — a Full-Stack Developer who enjoys building modern applications with Next.js, React, TypeScript, PostgreSQL, and Prisma.
           </p>
 
           <div className="flex flex-wrap items-center gap-3">
