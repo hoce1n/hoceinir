@@ -29,18 +29,17 @@ export function Hero() {
           </motion.div>
 
           <h1 id="hero-heading" className="font-mono text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            <FallingText text="Building neat web apps" />
-            <br />
-            <span className="text-muted-foreground">&amp; </span>
-            <span className="text-primary">
-              <TypingText text="configuring servers from scratch." speed={32} startDelay={900} />
-            </span>
+            {/* <FallingText text="Learning by building." /> */}
+            <TypingText 
+              text="Learning by building." 
+              speed={32} 
+              startDelay={900} 
+              className="text-primary"
+            />
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Hey, I'm <span className="font-mono text-foreground">hocein</span> — a Full-Stack
-            Developer & Linux SysAdmin shipping Next.js/TypeScript apps backed by Go API routes,
-            Prisma + PostgreSQL, and Better-Auth sessions that don't leak.
+            Hi, I'm <span className="font-mono text-foreground">hocein</span> — a Full-Stack Developer who enjoys building modern applications with Next.js, React, TypeScript, PostgreSQL, and Prisma.
           </p>
 
           <div className="flex flex-wrap items-center gap-3">
