@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { Send, Loader2, Send as TgIcon, } from "lucide-react";
 import { contactSchema, type ContactInput } from "@/lib/contact-schema";
+import { submitContactForm } from "@/app/actions";
 import { socials } from "@/lib/content";
 import { MagneticCard } from "@/components/fx/MagneticCard";
 import { Prompt } from "@/components/terminal/Prompt";
@@ -50,24 +51,47 @@ export function Contact() {
     register,
     handleSubmit,
     reset,
+    setError,
+    clearErrors,
     formState: { errors },
-  } = useForm<ContactInput>({ resolver: zodResolver(contactSchema as any) });
+  } = useForm<ContactInput>({ resolver: zodResolver(contactSchema) });
 
   const onSubmit = async (data: ContactInput) => {
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 800));
-    setSubmitting(false);
-    toast.success("Message transmitted ✓", {
-      description: `connection closed cleanly — thanks, ${data.name.split(" ")[0]}.`,
-    });
-    reset();
+    clearErrors();
+
+    try {
+      const result = await submitContactForm(data);
+
+      if (!result.success) {
+        if (result.fieldErrors) {
+          for (const [field, messages] of Object.entries(result.fieldErrors)) {
+            const key = field as keyof ContactInput;
+            setError(key, { type: "server", message: messages?.[0] ?? "invalid value" });
+          }
+        }
+        toast.error("transmission failed", { description: result.error });
+        return;
+      }
+
+      toast.success("Message transmitted ✓", {
+        description: `connection closed cleanly — thanks, ${result.firstName}.`,
+      });
+      reset();
+    } catch {
+      toast.error("connection dropped", {
+        description: "Something went wrong on our side. Try again in a bit.",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
     <section id="contact" aria-labelledby="contact-heading" className="border-t border-border">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
         <header className="mb-10">
-          <p className="font-mono text-xs uppercase tracking-widest text-primary">// 05 · contact</p>
+          <p className="font-mono text-xs uppercase tracking-widest text-primary">{"// 05 · contact"}</p>
           <h2 id="contact-heading" className="mt-2 font-mono text-3xl font-semibold tracking-tight sm:text-4xl">
             open a socket
           </h2>
@@ -122,7 +146,7 @@ export function Contact() {
 
           <div className="space-y-4">
             <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-              // or reach out on
+              {"// or reach out on"}
             </p>
             <ul className="grid gap-3 sm:grid-cols-2">
               {socials.map((s) => {

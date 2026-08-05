@@ -1,23 +1,12 @@
-import { EmailTemplate } from '@/components/email-template';
-import { Resend } from 'resend';
+import { submitContactForm } from "@/app/actions";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-export async function POST() {
+export async function POST(request: Request) {
   try {
-    const { data, error } = await resend.emails.send({
-      from: 'Acme <onboarding@resend.dev>',
-      to: ['delivered@resend.dev'],
-      subject: 'Hello world',
-      react: EmailTemplate({ firstName: 'John' }),
-    });
+    const body = await request.json();
+    const result = await submitContactForm(body);
 
-    if (error) {
-      return Response.json({ error }, { status: 500 });
-    }
-
-    return Response.json(data);
-  } catch (error) {
-    return Response.json({ error }, { status: 500 });
+    return Response.json(result, { status: result.success ? 200 : 400 });
+  } catch {
+    return Response.json({ success: false, error: "Invalid request body" }, { status: 400 });
   }
 }
