@@ -1,10 +1,10 @@
 # Hoceinir Portfolio
 
-A polished personal portfolio and developer workspace for Hocein. The site presents selected projects, writing, tools, and a contact flow in a terminal-inspired interface built with the Next.js App Router.
+A polished personal portfolio and developer workspace for myself. The site presents selected projects, writing, tools, and a contact flow in a terminal-inspired interface built with the Next.js App Router.
 
 ## Overview
 
-Hoceinir is designed as a production-ready portfolio application rather than a starter template. It combines a modern frontend stack with database-backed contact submissions and transactional email delivery.
+hoce1n.ir is designed as a production-ready portfolio application rather than a starter template. It combines a modern frontend stack with database-backed contact submissions and transactional email delivery.
 
 ### Key features
 
