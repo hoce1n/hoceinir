@@ -16,13 +16,13 @@ export function Projects() {
         <header className="mb-10 flex items-end justify-between gap-4">
           <div>
             <p className="font-mono text-xs tracking-widest text-primary uppercase">
-              // 03 · projects
+              {"// 03 · projects"}
             </p>
             <h2
               id="projects-heading"
               className="mt-2 font-mono text-3xl font-semibold tracking-tight sm:text-4xl"
             >
-              things i've shipped
+              things i&apos;ve shipped
             </h2>
           </div>
           <span className="hidden font-mono text-xs text-muted-foreground sm:inline">

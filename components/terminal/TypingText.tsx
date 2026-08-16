@@ -18,17 +18,16 @@ export function TypingText({
   onDone?: () => void;
 }) {
   const reduce = useReducedMotion();
-  const [out, setOut] = useState(reduce ? text : "");
+  const [out, setOut] = useState("");
 
   useEffect(() => {
     if (reduce) {
-      setOut(text);
       onDone?.();
       return;
     }
-    setOut("");
     let i = 0;
     const start = setTimeout(() => {
+      setOut("");
       const iv = setInterval(() => {
         i++;
         setOut(text.slice(0, i));
@@ -44,7 +43,7 @@ export function TypingText({
 
   return (
     <span className={className}>
-      {out}
+      {reduce ? text : out}
       <span className="caret-blink ml-0.5 inline-block h-[1em] w-[0.55ch] -translate-y-[2px] bg-primary align-middle" />
     </span>
   );
