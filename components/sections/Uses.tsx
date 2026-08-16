@@ -8,7 +8,7 @@ export function Uses() {
     <section id="uses" aria-labelledby="uses-heading" className="border-t border-border bg-muted/20">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
         <header className="mb-10">
-          <p className="font-mono text-xs uppercase tracking-widest text-primary">// 04 · uses</p>
+          <p className="font-mono text-xs uppercase tracking-widest text-primary">{"// 04 · uses"}</p>
           <h2 id="uses-heading" className="mt-2 font-mono text-3xl font-semibold tracking-tight sm:text-4xl">
             the setup
           </h2>

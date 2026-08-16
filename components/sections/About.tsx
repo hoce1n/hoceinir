@@ -32,7 +32,7 @@ export function About() {
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
         <header className="mb-10 flex items-end justify-between gap-4">
           <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-primary">// 01 · about</p>
+            <p className="font-mono text-xs uppercase tracking-widest text-primary">{"// 01 · about"}</p>
             <h2 id="about-heading" className="mt-2 font-mono text-3xl font-semibold tracking-tight sm:text-4xl">
               who is <span className="text-primary">hocein</span>?
             </h2>
@@ -42,7 +42,7 @@ export function About() {
         <div className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-start">
           <div className="space-y-6">
             <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-              I'm a software developer with a strong passion for the{" "}
+              I&apos;m a software developer with a strong passion for the{" "}
               <span className="font-mono text-foreground">Next.js</span> ecosystem (TypeScript +
               Tailwind), Go-powered API routes, and database orchestration via{" "}
               <span className="font-mono text-foreground">Prisma</span> across SQLite, MySQL, and

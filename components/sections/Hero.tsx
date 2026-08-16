@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, Terminal } from "lucide-react";
 import { TerminalWindow } from "@/components/terminal/TerminalWindow";
 import { TypingText } from "@/components/terminal/TypingText";
-import { FallingText } from "@/components/terminal/FallingText";
 import { Prompt } from "@/components/terminal/Prompt";
 import { InteractiveTerminal } from "@/components/terminal/InteractiveTerminal";
 
@@ -29,7 +28,6 @@ export function Hero() {
           </motion.div>
 
           <h1 id="hero-heading" className="font-mono text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            {/* <FallingText text="Learning by building." /> */}
             <TypingText 
               text="Learning by building." 
               speed={32} 
@@ -39,7 +37,7 @@ export function Hero() {
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Hi, I&lsquo;m <span className="font-mono text-foreground">hocein</span> — a Full-Stack Developer who enjoys building modern applications with Next.js, React, TypeScript, PostgreSQL, and Prisma.
+            Hi, I&apos;m <span className="font-mono text-foreground">hocein</span> — a Full-Stack Developer who enjoys building modern applications with Next.js, React, TypeScript, PostgreSQL, and Prisma.
           </p>
 
           <div className="flex flex-wrap items-center gap-3">
@@ -76,7 +74,8 @@ export function Hero() {
 
       <div className="relative mx-auto max-w-6xl px-4 pb-20 sm:px-6">
         <p className="mb-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-          // try it · <span className="text-primary">type 'help'</span>
+          {"// try it · "}
+          <span className="text-primary">type &apos;help&apos;</span>
         </p>
         <InteractiveTerminal />
       </div>

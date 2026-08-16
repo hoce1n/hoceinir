@@ -6,7 +6,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-4 px-4 py-8 font-mono text-xs text-muted-foreground sm:grid-cols-[1fr_auto] sm:px-6">
         <div className="space-y-1">
           <p>
-            <span className="text-primary">$</span> echo "© {new Date().getFullYear()} hocein — built with caffeine and chmod"
+            <span className="text-primary">$</span> echo &quot;© {new Date().getFullYear()} hocein — built with caffeine and chmod&quot;
           </p>
           <p className="text-muted-foreground/70">uptime: ∞ · status: <span className="text-primary">healthy</span></p>
         </div>
