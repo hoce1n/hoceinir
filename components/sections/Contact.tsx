@@ -38,6 +38,7 @@ function Instagram() {
   )
 }
 
+
 const iconFor: Record<string, React.ComponentType<{ className?: string }>> = {
   GitHub: Github,
   X: Twitter,
