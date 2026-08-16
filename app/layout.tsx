@@ -4,6 +4,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/sonner';
 import { TanstackQueryProvider } from '@/components/providers/tanstackQueryProvider';
 import { ThemeProvider } from '@/components/theme-provider';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({
   subsets: ['latin'],
@@ -56,6 +57,7 @@ export default function RootLayout({
           <Toaster position="bottom-right" theme="dark" />
           </ThemeProvider>
         </TanstackQueryProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
