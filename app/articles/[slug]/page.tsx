@@ -41,7 +41,7 @@ export default async function ArticlePage({ params }: Props) {
       />
       <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
         <Link
-          href="/#articles"
+          href="/articles"
           className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground transition-colors hover:text-primary"
         >
           <Home className="size-3" /> cd ~/articles
@@ -92,7 +92,7 @@ export default async function ArticlePage({ params }: Props) {
 
         <div className="mt-10 flex justify-between gap-4 font-mono text-xs">
           <Link
-            href="/#articles"
+            href="/articles"
             className="text-muted-foreground transition-colors hover:text-primary"
           >
             ← back to articles
