@@ -141,7 +141,7 @@ export function InteractiveTerminal() {
 
       <div
         ref={scrollRef}
-        className="max-h-64 min-h-[180px] overflow-y-auto p-4 font-mono text-sm leading-relaxed"
+        className="max-h-64 min-h-45 overflow-y-auto p-4 font-mono text-sm leading-relaxed"
       >
         {lines.map((l, i) => (
           <div

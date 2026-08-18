@@ -83,7 +83,7 @@ export function Hero({
               <Prompt>echo $STACK</Prompt>
               <div className="pl-4 text-primary">{stack}</div>
               <Prompt>
-                <span className="caret-blink inline-block h-[1em] w-[0.55ch] -translate-y-[2px] bg-primary align-middle" />
+                <span className="caret-blink inline-block h-[1em] w-[0.55ch] -translate-y-0.5 bg-primary align-middle" />
               </Prompt>
             </div>
           </TerminalWindow>
