@@ -31,8 +31,11 @@ export default async function AdminDashboardPage() {
     },
     { cmd: statLabels.usesGroups, value: stats.usesGroups },
     { cmd: statLabels.socials, value: stats.socials },
-    { cmd: statLabels.users, value: stats.users },
   ]
+
+  if (admin.role === "OWNER") {
+    statRows.push({ cmd: statLabels.users, value: stats.users })
+  }
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
@@ -46,7 +49,8 @@ export default async function AdminDashboardPage() {
 
       <div className="mt-4 space-y-1 font-mono text-xs text-muted-foreground">
         <p>
-          [ok] session valid · <span className="text-primary">authenticated</span>
+          [ok] session valid ·{" "}
+          <span className="text-primary">authenticated</span>
         </p>
         <p>
           user : <span className="text-foreground">{admin.name}</span>
@@ -55,7 +59,8 @@ export default async function AdminDashboardPage() {
           email: <span className="text-foreground">{admin.email}</span>
         </p>
         <p>
-          role : <span className="text-primary">{admin.role.toLowerCase()}</span>
+          role :{" "}
+          <span className="text-primary">{admin.role.toLowerCase()}</span>
         </p>
         <p>[done] exit 0</p>
       </div>
@@ -82,7 +87,9 @@ export default async function AdminDashboardPage() {
               </div>
               <p className="mt-2 font-mono text-2xl text-foreground">
                 {row.value}
-                <span className="ml-1 text-sm text-muted-foreground">entries</span>
+                <span className="ml-1 text-sm text-muted-foreground">
+                  entries
+                </span>
               </p>
             </div>
           ))}

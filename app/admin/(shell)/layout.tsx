@@ -16,7 +16,7 @@ export default async function AdminShellLayout({
     <div className="min-h-screen bg-background text-foreground">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(50%_40%_at_50%_0%,color-mix(in_oklab,var(--primary)_14%,transparent),transparent_70%)]" />
       <div className="relative flex min-h-screen">
-        <AdminSidebar />
+        <AdminSidebar role={admin.role} />
         <div className="flex min-w-0 flex-1 flex-col">
           <AdminTopbar admin={admin} />
           <main className="flex-1">{children}</main>
