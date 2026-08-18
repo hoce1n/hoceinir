@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation"
 import { adminNav } from "@/lib/admin-nav"
 import { cn } from "@/lib/utils"
 
-export function AdminSidebar() {
+export function AdminSidebar({ role }: { role: "OWNER" | "ADMIN" | "EDITOR" }) {
   const pathname = usePathname()
 
   return (
@@ -40,21 +40,29 @@ export function AdminSidebar() {
                         "group flex items-center gap-2.5 rounded-md px-2.5 py-1.5 font-mono text-sm transition-colors",
                         active
                           ? "bg-primary/10 text-primary"
-                          : "text-muted-foreground hover:bg-muted/60 hover:text-foreground",
+                          : "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
                       )}
                     >
                       <item.icon
                         className={cn(
                           "size-4 shrink-0",
-                          active ? "text-primary" : "text-muted-foreground group-hover:text-foreground",
+                          active
+                            ? "text-primary"
+                            : "text-muted-foreground group-hover:text-foreground"
                         )}
                       />
                       {item.href === "/admin" ? (
-                        <span className={cn(active && "text-primary")}>./{item.label}</span>
+                        <span className={cn(active && "text-primary")}>
+                          ./{item.label}
+                        </span>
                       ) : (
-                        <span className={cn(active && "text-primary")}>{item.label}</span>
+                        <span className={cn(active && "text-primary")}>
+                          {item.label}
+                        </span>
                       )}
-                      {active && <span className="ml-auto text-primary">*</span>}
+                      {active && (
+                        <span className="ml-auto text-primary">*</span>
+                      )}
                     </Link>
                   </li>
                 )
@@ -65,7 +73,10 @@ export function AdminSidebar() {
       </nav>
 
       <div className="border-t border-border px-4 py-3 font-mono text-[10px] text-muted-foreground/60">
-        v1 · admin shell
+        <p>v1 · admin shell</p>
+        <p className="mt-1">
+          role: <span className="text-primary">{role.toLowerCase()}</span>
+        </p>
       </div>
     </aside>
   )
