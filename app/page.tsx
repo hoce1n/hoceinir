@@ -6,7 +6,7 @@ import { Contact } from "@/components/sections/Contact"
 import { Hero } from "@/components/sections/Hero"
 import { Projects } from "@/components/sections/Projects"
 import { Uses } from "@/components/sections/Uses"
-import { getArticles } from "@/lib/data/articles"
+import { getArticles, getLatestLogArticles } from "@/lib/data/articles"
 import {
   getAbout,
   getProjects,
@@ -18,17 +18,18 @@ import {
 export const dynamic = "force-dynamic"
 
 export default async function Page() {
-  const [site, about, articles, projects, uses, socials] = await Promise.all([
-    getSiteSettings(),
-    getAbout(),
-    getArticles(),
-    getProjects(),
-    getUsesGroups(),
-    getSocials(),
-  ])
+  const [site, about, articles, logs, projects, uses, socials] =
+    await Promise.all([
+      getSiteSettings(),
+      getAbout(),
+      getArticles(),
+      getLatestLogArticles(),
+      getProjects(),
+      getUsesGroups(),
+      getSocials(),
+    ])
 
   const poetry = articles.filter((a) => a.kind === "poetry")
-  const logs = articles.filter((a) => a.kind === "log")
 
   return (
     <div className="dark min-h-screen bg-background text-foreground">
