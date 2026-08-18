@@ -1,11 +1,11 @@
 "use client"
 import { motion } from "framer-motion"
 import { ExternalLink, GitBranch } from "lucide-react"
-import { projects } from "@/lib/content"
 import { MagneticCard } from "@/components/fx/MagneticCard"
 import { StatusDot } from "@/components/fx/StatusDot"
+import type { ProjectItem } from "@/lib/data/content"
 
-export function Projects() {
+export function Projects({ projects }: { projects: ProjectItem[] }) {
   return (
     <section
       id="projects"

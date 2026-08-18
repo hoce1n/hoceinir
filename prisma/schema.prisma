@@ -12,10 +12,162 @@ datasource db {
   provider = "postgresql"
 }
 
-model ContactMessage {
+enum Role {
+  OWNER
+  ADMIN
+  EDITOR
+}
+
+enum ProjectStatus {
+  LIVE
+  WIP
+  ARCHIVED
+}
+
+enum ArticleKind {
+  LOG
+  POETRY
+}
+
+enum MessageStatus {
+  NEW
+  READ
+  ARCHIVED
+}
+
+model AdminUser {
+  id           String        @id @default(cuid())
+  email        String        @unique
+  passwordHash String
+  name         String
+  role         Role          @default(EDITOR)
+  active       Boolean       @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  sessions     AdminSession[]
+  logs         ActivityLog[]
+}
+
+model AdminSession {
+  id         String    @id @default(cuid())
+  userId     String
+  tokenHash  String    @unique
+  expiresAt  DateTime
+  ip         String?
+  userAgent  String?
+  createdAt  DateTime  @default(now())
+  lastUsedAt DateTime  @default(now())
+  user       AdminUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model Project {
+  id        String        @id @default(cuid())
+  title     String
+  blurb     String
+  tags      String[]
+  status    ProjectStatus @default(WIP)
+  repo      String?
+  url       String?
+  order     Int           @default(0)
+  published Boolean       @default(true)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+model Article {
+  id          String      @id @default(cuid())
+  slug        String      @unique
+  title       String
+  excerpt     String?
+  content     String
+  kind        ArticleKind @default(LOG)
+  tags        String[]
+  readTime    String?
+  closer      String?
+  published   Boolean     @default(true)
+  publishedAt DateTime?
+  order       Int         @default(0)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@index([kind, published])
+}
+
+model UsesGroup {
   id        String   @id @default(cuid())
+  group     String
+  cmd       String
+  items     String[]
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SocialLink {
+  id     String @id @default(cuid())
+  name   String
+  handle String
+  href   String
+  order  Int    @default(0)
+}
+
+model AboutSection {
+  id         String   @id @default("about")
+  name       String
+  role       String
+  loves      String
+  currently  String
+  philosophy String
+  paragraphs String[]
+  stats      Json
+  updatedAt  DateTime @updatedAt
+}
+
+model SiteSettings {
+  id               String   @id @default("site")
+  version          String
+  heroTitle        String
+  heroSubtitle     String
+  stack            String
+  badgeText        String
+  headerBrandLeft  String
+  headerBrandRight String
+  nav              Json
+  footerLeft       String
+  footerRight      String
+  footerStatus     String
+  tip              String
+  contactIntro     String
+  updatedAt        DateTime @updatedAt
+}
+
+model ContactMessage {
+  id        String        @id @default(cuid())
   name      String
   email     String
   message   String
+  status    MessageStatus @default(NEW)
+  readAt    DateTime?
+  createdAt DateTime      @default(now())
+
+  @@index([status])
+}
+
+model ActivityLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String
+  entity    String
+  entityId  String?
+  detail    Json?
+  ip        String?
   createdAt DateTime @default(now())
+  user      AdminUser? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([entity, entityId])
+  @@index([createdAt])
 }

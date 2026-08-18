@@ -1,13 +1,26 @@
-'use client';
+"use client"
 
-import { motion } from "framer-motion";
-import { ArrowRight, Terminal } from "lucide-react";
-import { TerminalWindow } from "@/components/terminal/TerminalWindow";
-import { TypingText } from "@/components/terminal/TypingText";
-import { Prompt } from "@/components/terminal/Prompt";
-import { InteractiveTerminal } from "@/components/terminal/InteractiveTerminal";
+import { motion } from "framer-motion"
+import { ArrowRight, Terminal } from "lucide-react"
+import { TerminalWindow } from "@/components/terminal/TerminalWindow"
+import { TypingText } from "@/components/terminal/TypingText"
+import { Prompt } from "@/components/terminal/Prompt"
+import { InteractiveTerminal } from "@/components/terminal/InteractiveTerminal"
+import { InlineText } from "@/components/fx/InlineText"
 
-export function Hero() {
+export function Hero({
+  version,
+  badgeText,
+  heroTitle,
+  heroSubtitle,
+  stack,
+}: {
+  version: string
+  badgeText: string
+  heroTitle: string
+  heroSubtitle: string
+  stack: string
+}) {
   return (
     <section
       id="hero"
@@ -24,20 +37,25 @@ export function Hero() {
             className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 font-mono text-xs text-muted-foreground backdrop-blur"
           >
             <Terminal className="size-3.5 text-primary" />
-            <span>v1.0.0 · <span className="text-primary">online</span></span>
+            <span>
+              {version} · <span className="text-primary">{badgeText}</span>
+            </span>
           </motion.div>
 
-          <h1 id="hero-heading" className="font-mono text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            <TypingText 
-              text="Learning by building." 
-              speed={32} 
-              startDelay={900} 
+          <h1
+            id="hero-heading"
+            className="font-mono text-4xl leading-[1.05] font-semibold tracking-tight sm:text-5xl lg:text-6xl"
+          >
+            <TypingText
+              text={heroTitle}
+              speed={32}
+              startDelay={900}
               className="text-primary"
             />
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Hi, I&apos;m <span className="font-mono text-foreground">hocein</span> — a Full-Stack Developer who enjoys building modern applications with Next.js, React, TypeScript, PostgreSQL, and Prisma.
+            <InlineText text={heroSubtitle} />
           </p>
 
           <div className="flex flex-wrap items-center gap-3">
@@ -63,7 +81,7 @@ export function Hero() {
               <Prompt>whoami</Prompt>
               <div className="pl-4 text-foreground">hocein</div>
               <Prompt>echo $STACK</Prompt>
-              <div className="pl-4 text-primary">next · ts · tailwind · go · prisma · postgres · better-auth</div>
+              <div className="pl-4 text-primary">{stack}</div>
               <Prompt>
                 <span className="caret-blink inline-block h-[1em] w-[0.55ch] -translate-y-[2px] bg-primary align-middle" />
               </Prompt>
@@ -73,12 +91,12 @@ export function Hero() {
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4 pb-20 sm:px-6">
-        <p className="mb-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+        <p className="mb-3 font-mono text-xs tracking-widest text-muted-foreground uppercase">
           {"// try it · "}
           <span className="text-primary">type &apos;help&apos;</span>
         </p>
         <InteractiveTerminal />
       </div>
     </section>
-  );
+  )
 }
