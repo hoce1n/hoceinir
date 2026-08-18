@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && pnpm prisma migrate resolve --rolled-back 20260816171000_add_site_content && prisma migrate deploy && next build",
+    "build": "prisma generate && pnpm prisma db seed && next build",
     "start": "next start -p 4173",
     "lint": "eslint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
