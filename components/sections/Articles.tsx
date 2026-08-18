@@ -117,6 +117,15 @@ export function Articles({
             </motion.article>
           ))}
         </div>
+
+        <div className="mt-8 flex justify-end">
+          <Link
+            href="/articles"
+            className="inline-flex items-center gap-2 rounded-md border border-primary/50 bg-primary/5 px-4 py-2 font-mono text-xs tracking-wider text-primary transition-colors hover:border-primary hover:bg-primary/10"
+          >
+            ls ~/articles <span aria-hidden="true">→</span>
+          </Link>
+        </div>
       </div>
     </section>
   )
