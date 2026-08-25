@@ -1,50 +1,59 @@
-import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
-import './globals.css';        
-import { Toaster } from '@/components/ui/sonner';
-import { TanstackQueryProvider } from '@/components/providers/tanstackQueryProvider';
-import { ThemeProvider } from '@/components/theme-provider';
+import type { Metadata } from "next"
+import { Inter, JetBrains_Mono } from "next/font/google"
+import "./globals.css"
+import { Toaster } from "@/components/ui/sonner"
+import { TanstackQueryProvider } from "@/components/providers/tanstackQueryProvider"
+import { ThemeProvider } from "@/components/theme-provider"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+})
 
 const jetbrains = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-jetbrains-mono',
-  display: 'swap',
-});
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+})
+
+const siteTitle = "Hocein — Full-Stack Web Developer"
+const siteDescription =
+  "Hocein builds thoughtful web applications and configures production-ready infrastructure from scratch."
 
 export const metadata: Metadata = {
-  title: '~/hocein',
-  description: 'Building neat web apps & configuring servers from scratch.',
-  authors: [{ name: 'Lovable' }],
+  metadataBase: new URL("https://hoce1n.ir"),
+  title: siteTitle,
+  description: siteDescription,
+  authors: [{ name: "Hocein", url: "./" }],
+  creator: "Hocein",
+  alternates: {
+    canonical: "./",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
-    title: '~/hocein',
-    description: 'Building neat web apps & configuring servers from scratch.',
-    type: 'website',
-    images: [
-      {
-        url: 'https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/511bcd83-be0a-47c2-a74b-c73c62b672ef',
-      },
-    ],
+    type: "website",
+    locale: "en_US",
+    url: "./",
+    siteName: "Hocein",
+    title: siteTitle,
+    description: siteDescription,
   },
   twitter: {
-    card: 'summary',
-    site: '@Lovable',
-    title: '~/hocein',
-    description: 'Building neat web apps & configuring servers from scratch.',
-    images: ['https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/511bcd83-be0a-47c2-a74b-c73c62b672ef'],
+    card: "summary",
+    title: siteTitle,
+    description: siteDescription,
   },
-};
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -53,12 +62,12 @@ export default function RootLayout({
       >
         <TanstackQueryProvider>
           <ThemeProvider>
-          {children}
-          <Toaster position="bottom-right" theme="dark" />
+            {children}
+            <Toaster position="bottom-right" theme="dark" />
           </ThemeProvider>
         </TanstackQueryProvider>
         <SpeedInsights />
       </body>
     </html>
-  );
+  )
 }

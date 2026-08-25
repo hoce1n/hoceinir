@@ -39,6 +39,7 @@ export default async function AdminDashboardPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
+      <h1 className="sr-only">Admin dashboard</h1>
       <p className="font-mono text-sm">
         <span className="text-primary">hocein@admin</span>
         <span className="text-muted-foreground">:</span>

@@ -13,6 +13,9 @@ export const dynamic = "force-dynamic"
 export const metadata: Metadata = {
   title: "articles · ~/hocein",
   description: "Published dev logs and tech poetry from hocein.",
+  alternates: {
+    canonical: "/articles",
+  },
 }
 
 export default async function ArticlesIndexPage() {
