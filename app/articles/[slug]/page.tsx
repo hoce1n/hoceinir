@@ -15,10 +15,36 @@ type Props = { params: Promise<{ slug: string }> }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const article = await getArticleBySlug(slug)
+
+  if (!article) {
+    return {
+      title: "article not found · ~/hocein",
+      robots: { index: false, follow: false },
+    }
+  }
+
+  const title = `${article.title} · ~/hocein`
+  const description =
+    article.excerpt ?? "Read this published article from hocein."
+  const canonicalPath = `/articles/${encodeURIComponent(article.slug)}`
+
   return {
-    title: article
-      ? `${article.title} · ~/hocein`
-      : "article not found · ~/hocein",
+    title,
+    description,
+    alternates: {
+      canonical: canonicalPath,
+    },
+    openGraph: {
+      type: "article",
+      title,
+      description,
+      url: canonicalPath,
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+    },
   }
 }
 

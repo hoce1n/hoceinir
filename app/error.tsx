@@ -13,6 +13,7 @@ type ErrorPageProps = {
 export default function ErrorPage({ reset }: ErrorPageProps) {
   return (
     <main className="dark flex min-h-screen items-center justify-center bg-background px-4 py-12 text-foreground sm:px-6">
+      <h1 className="sr-only">Application error</h1>
       <TerminalWindow
         title="zsh — hocein@dev:~/runtime"
         className="w-full max-w-2xl"

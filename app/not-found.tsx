@@ -6,6 +6,7 @@ import { TerminalWindow } from "@/components/terminal/TerminalWindow"
 export default function NotFound() {
   return (
     <main className="dark flex min-h-screen items-center justify-center bg-background px-4 py-12 text-foreground sm:px-6">
+      <h1 className="sr-only">Page not found</h1>
       <TerminalWindow
         title="zsh — hocein@dev:~/404"
         className="w-full max-w-2xl"
